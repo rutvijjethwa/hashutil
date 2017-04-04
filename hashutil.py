@@ -38,10 +38,13 @@ parser.add_option("-a","--hash",dest="hashAlgo",action="store",metavar="Hashing_
 (options, args) = parser.parse_args()
 
 
+
 if options.filename != None:
     print("Hash for '{0}' is {1}".format(options.filename,fileHasher(options.filename)))
+    if options.inputHash != None:
+        print('Compare string MATCHED') if (options.inputHash==fileHasher(options.filename)) else print('Compare string does NOT MATCH')
 
 if options.stringHash != None:
     print("Hash for '{0}' is {1}".format(options.stringHash,stringHasher(options.stringHash)))
-
-
+    if options.inputHash != None:
+        print('Compare string MATCHED') if (options.inputHash==stringHasher(options.stringHash)) else print('Compare string does NOT MATCH')
