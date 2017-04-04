@@ -1,4 +1,4 @@
-#Hashutil
+# Hashutil
 Basic hashing utility
 
 
@@ -20,7 +20,7 @@ Options:
 ```
 
 
-###Sample Command
+### Sample Command
 ```commandline
 python hashutil.py --file=abc.txt 
 ```
