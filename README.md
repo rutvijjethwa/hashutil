@@ -1,0 +1,2 @@
+# hashutil
+Basic hashing utility
