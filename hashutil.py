@@ -40,7 +40,7 @@ parser.add_option("-a","--hash",dest="hashAlgo",action="store",metavar="Hashing_
 
 
 if options.filename != None:
-    print("Hash for '{0}' is {1}".format(options.filename,fileHasher(options.filename)))
+    print("Hash for the file '{0}' is {1}".format(options.filename,fileHasher(options.filename)))
     if options.inputHash != None:
         print('Compare string MATCHED') if (options.inputHash==fileHasher(options.filename)) else print('Compare string does NOT MATCH')
 
