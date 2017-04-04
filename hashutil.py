@@ -1,7 +1,7 @@
 import hashlib
-import sys
+# import sys
 from optparse import OptionParser
-
+#############################################################
 #File Hasher
 def fileHasher(fileToHash):
     sha =  hashlib.sha256()
@@ -11,7 +11,7 @@ def fileHasher(fileToHash):
             return sha.hexdigest()
     except FileNotFoundError:
         print("INPUT ERROR :  File Does Not Exist")
-
+##############################################################
 #String Hasher
 def stringHasher(stringToHash):
     sha = hashlib.sha256()
@@ -20,10 +20,10 @@ def stringHasher(stringToHash):
         return sha.hexdigest()
     except ValueError:
             print("INPUT ERROR")
-
+#############################################################
 #List of Supported Hash
 supportedHash = ['md5','sha1','sha224','sha256','sha384','sha512']
-
+#############################################################
 #Input Processing
 parser = OptionParser()
 parser.add_option("-f", "--file", dest="filename",action="store",
@@ -36,9 +36,7 @@ parser.add_option("-a","--hash",dest="hashAlgo",action="store",metavar="Hashing_
                   help="Hashing algorithm to use. Default is sha256"
                        "\nAvaliable Options :'md5', 'sha1','sha224', 'sha256', 'sha384', 'sha512'")
 (options, args) = parser.parse_args()
-
-
-
+####################################################################################################
 if options.filename != None:
     print("Hash for the file '{0}' is {1}".format(options.filename,fileHasher(options.filename)))
     if options.inputHash != None:
