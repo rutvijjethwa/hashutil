@@ -32,6 +32,7 @@ parser.add_option("-s", "--string", dest="stringHash",action="store",
                   help="String input for hashing", metavar="String")
 parser.add_option("-c","--compare",dest="inputHash",action="store",metavar="Hash_String",
                   help="Input the string to match with the file. Use along with -f option.")
+#TODO: Developing a function for following section
 parser.add_option("-a","--hash",dest="hashAlgo",action="store",metavar="Hashing_Algorithm",
                   help="Hashing algorithm to use. Default is sha256"
                        "\nAvaliable Options :'md5', 'sha1','sha224', 'sha256', 'sha384', 'sha512'")
