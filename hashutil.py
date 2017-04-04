@@ -1,12 +1,25 @@
 import hashlib
+import sys
 from optparse import OptionParser
 
-#file Hasher
+#File Hasher
 def fileHasher(fileToHash):
     sha =  hashlib.sha256()
-    with open(file=fileToHash, mode="rb") as fileObject:
-        sha.update(fileObject.read())
+    try:
+        with open(file=fileToHash, mode="rb") as fileObject:
+            sha.update(fileObject.read())
+            return sha.hexdigest()
+    except FileNotFoundError:
+        print("INPUT ERROR :  File Does Not Exist")
+
+#String Hasher
+def stringHasher(stringToHash):
+    sha = hashlib.sha256()
+    try:
+        sha.update(stringToHash.encode('ascii'))
         return sha.hexdigest()
+    except ValueError:
+            print("INPUT ERROR")
 
 #List of Supported Hash
 supportedHash = ['md5','sha1','sha224','sha256','sha384','sha512']
@@ -15,7 +28,7 @@ supportedHash = ['md5','sha1','sha224','sha256','sha384','sha512']
 parser = OptionParser()
 parser.add_option("-f", "--file", dest="filename",action="store",
                   help="File input for hashing", metavar="FILE")
-parser.add_option("-s", "--string", dest="stringToHash",action="store",
+parser.add_option("-s", "--string", dest="stringHash",action="store",
                   help="String input for hashing", metavar="String")
 parser.add_option("-c","--compare",dest="inputHash",action="store",metavar="Hash_String",
                   help="Input the string to match with the file. Use along with -f option.")
@@ -25,7 +38,10 @@ parser.add_option("-a","--hash",dest="hashAlgo",action="store",metavar="Hashing_
 (options, args) = parser.parse_args()
 
 
-# con1 = options.filename != None
+if options.filename != None:
+    print("Hash for '{0}' is {1}".format(options.filename,fileHasher(options.filename)))
 
-HashVal = fileHasher(options.filename)
-print(HashVal)
+if options.stringHash != None:
+    print("Hash for '{0}' is {1}".format(options.stringHash,stringHasher(options.stringHash)))
+
+
