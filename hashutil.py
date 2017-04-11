@@ -24,6 +24,7 @@ def decorator(arg1):
     """Decorator to warp Hashing module
     Return Hashed string
     """
+
     def choice(func):
         print("Argument for Hashing {}".format(arg1))
         x = func()
@@ -48,30 +49,36 @@ def hashMD5():
     hashObject = hashlib.md5()
     return hashObject
 
+
 def hashSHA1():
     """Returns and SHA1 Hashlib Object"""
     hashObject = hashlib.sha1()
     return hashObject
+
 
 def hashSHA224():
     """Returns and SHA224 Hashlib Object"""
     hashObject = hashlib.sha224()
     return hashObject
 
+
 def hashSHA256():
     """Returns and SHA256 Hashlib Object"""
     hashObject = hashlib.sha256()
     return hashObject
+
 
 def hashSHA384():
     """Returns and 384 Hashlib Object"""
     hashObject = hashlib.sha384()
     return hashObject
 
+
 def hashSHA512():
     """Returns and SHA512 Hashlib Object"""
     hashObject = hashlib.sha512()
     return hashObject
+
 
 # decorator(stringHash)(hashMD5) #solution
 #################################################################
@@ -89,7 +96,7 @@ if __name__ == '__main__':
                       help="Input the string to match with the file. Use along with -f option.")
     parser.add_option("-a", "--hash", dest="hashAlgo", action="store", metavar="Hashing_Algorithm",
                       help="Hashing algorithm to use. Default is sha256"
-                           "\nAvaliable Options :'md5', 'sha1','sha224', 'sha256', 'sha384', 'sha512'")
+                           "\nAvailable Options :'md5', 'sha1','sha224', 'sha256', 'sha384', 'sha512'")
     (options, args) = parser.parse_args()
     ####################################################################################################
 
@@ -100,7 +107,7 @@ if __name__ == '__main__':
         if options.inputHash is not None:
             print('Compare string MATCHED') if (options.inputHash == fileHasher(options.filename)) else print(
                 "Compare string does NOT MATCH")
-        ##################################################################################################
+            ##################################################################################################
     if options.filename is None:
         if options.hashAlgo is not None and options.hashAlgo.lower() in supportedHash:
             decInput = options.stringHash
@@ -124,9 +131,9 @@ if __name__ == '__main__':
             stringHashOutput = decorator(options.stringHash)(hashSHA256)
             print("Hash Output: " + stringHashOutput)
 
-        ###################################################################################################
-        # COMPARE
-        ###################################################################################################
+###################################################################################################
+# COMPARE
+###################################################################################################
     if options.inputHash is not None and options.filename is None:
         print('Compare string MATCHED') if (options.inputHash == stringHashOutput) else print(
             'Compare string does NOT MATCH')
